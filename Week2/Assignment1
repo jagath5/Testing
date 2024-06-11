@@ -1,0 +1,37 @@
+package week2.day1;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Assignment1 {
+
+	@SuppressWarnings("deprecation")
+	public static void main(String[] args) throws InterruptedException {
+		ChromeDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.findElement(By.id("username")).sendKeys("DemoSalesManager");
+        driver.findElement(By.id("password")).sendKeys("crmsfa");
+        driver.findElement(By.className("decorativeSubmit")).click();
+        driver.findElement(By.className("crmsfa")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("//ul[@class='shortcuts']//a")).click();
+        driver.findElement(By.className("inputBox")).sendKeys("AFIPL");
+        driver.findElement(By.xpath("(//input[@name='firstName'])[3]")).sendKeys("JAGAN");
+        driver.findElement(By.id("createLeadForm_lastName")).sendKeys("R");
+        driver.findElement(By.className("smallSubmit")).click();
+                String title = driver.getTitle();
+		System.out.println(title);
+		if(title.contains("HOME")) {
+			System.out.println("page is verfied");
+		}else {
+			System.out.println("Page is not verfied");
+		}
+		
+               //Driver.close();
+	}
+
+}
