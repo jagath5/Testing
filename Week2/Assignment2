@@ -1,0 +1,44 @@
+package week2.day1;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class Assignment2 {	
+
+	public static void main(String[] args) throws InterruptedException {
+		ChromeDriver driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		driver.get("http://leaftaps.com/opentaps/control/main");
+		driver.findElement(By.id("username")).sendKeys("DemoSalesManager");
+        driver.findElement(By.id("password")).sendKeys("crmsfa");
+        driver.findElement(By.className("decorativeSubmit")).click();
+        driver.findElement(By.className("crmsfa")).click();
+        Thread.sleep(3000);
+        driver.findElement(By.xpath("(//ul[@class='shortcuts']//a)[2]")).click();
+        driver.findElement(By.id("accountName")).sendKeys("PRAVEEN");
+        driver.findElement(By.xpath("//textarea[@class='inputBox']")).sendKeys("Selenium Automation Tester");
+        WebElement db=driver.findElement(By.xpath("(//select[@class='inputBox'])[2]"));
+        Select options = new Select(db);
+		options.selectByVisibleText("Computer Software");
+		WebElement db1=driver.findElement(By.name("ownershipEnumId"));
+        Select options1 = new Select(db1);
+		options1.selectByVisibleText("S-Corporation");
+		WebElement db2=driver.findElement(By.name("dataSourceId"));
+        Select options2 = new Select(db2);
+		options2.selectByVisibleText("Employee");
+		WebElement db3=driver.findElement(By.name("marketingCampaignId"));
+        Select options3 = new Select(db3);
+		options3.selectByVisibleText("eCommerce Site Internal Campaign");
+		WebElement db4=driver.findElement(By.name("generalStateProvinceGeoId"));
+        Select options4 = new Select(db4);
+		options4.selectByVisibleText("Texas");
+		driver.findElement(By.className("smallSubmit")).click();
+		//driver.close();
+	}
+
+}
